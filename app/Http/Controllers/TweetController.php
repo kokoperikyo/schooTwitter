@@ -14,6 +14,7 @@ class TweetController extends Controller
       $getTweets = Tweet::all();
 
       return view('tweet.index',[
+        //こうするとindex.blade.phpで$tweetsという変数名で$getTweetsを使える
         'tweets' => $getTweets
       ]);
     }
@@ -32,5 +33,47 @@ class TweetController extends Controller
 
       return redirect('/tweets');//Route::get('/tweets', 'TweetController@index');に対応
     }
+
+    //tweetの詳細表示画面へ
+    public function show($tweetId){
+      //idをもとにそのツイートの情報を取得する
+      $tweet = Tweet::find($tweetId);
+
+      //ツイートの情報を$tweetで扱えるようにしてshow.blade.phpに飛ぶ
+      return view('tweet.show',[
+        'tweet' => $tweet
+      ]);
+    }
+
+    //更新（編集）画面に移動
+    public function edit($tweetId){
+      $tweet = Tweet::find($tweetId);
+
+      return view('tweet.edit',[
+        'tweet' => $tweet
+      ]);
+    }
+
+
+    //update処理を行う
+    //$requestには更新するための入力内容が入っている
+    public function update(Request $request,$tweetId){
+      $tweet = Tweet::find($tweetId);
+      $tweet->body = $request->input('body');//編集画面の投稿ボタンのinputタグのnameがbodyなのでこれで更新内容が取得できる。そんで上書き代入してる
+      $tweet->save();
+
+      return redirect('/tweets');//Route::get('/tweets', 'TweetController@index');に対応
+
+    }
+
+    //削除処理を行う
+    public function destroy($tweetId){
+      $tweet = Tweet::find($tweetId);
+      $tweet->delete();//これだけで削除できる。素晴らしい
+
+      return redirect('/tweets');//Route::get('/tweets', 'TweetController@index');に対応
+
+    }
+
 
 }
