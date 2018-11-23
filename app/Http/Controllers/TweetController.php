@@ -27,6 +27,11 @@ class TweetController extends Controller
     //DBに新規保存するstoreメソッドを追加
     //$requestにはフォームに入力された情報が入っている
     public function store(Request $request){
+      //バリデーション
+      $this->validate($request,[
+        'body' => ['required','string','max:225']
+      ]);
+
       $tweet = new Tweet;//Tweetモデルを読んで新しいレコードを作るよ！
       $tweet->body = $request->input('body');//Tweetテーブルのbodyに追加
       $tweet->save();//保存して新しいレコードが作られる

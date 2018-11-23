@@ -7,6 +7,16 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
+      {{-- バリデーションを超えられなかったエラーがあったら表示してあげる --}}
+      @if(count($errors) > 0)
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
         {{-- ルーティングにpostで渡す --}}
         <form action="/tweets" method="post">
             {!! csrf_field() !!}
@@ -14,7 +24,7 @@
             <div class="form-group row">
                 <label class="col-xs-2 col-form-label">ツイート本文</label>
                 <div class="col-xs-10">
-                    <input type="text" name="body" class="form-control" placeholder="ツイート本文を入力してください。"/>
+                    <input type="text" name="body" class="form-control" placeholder="ツイート本文を入力してください。" value="{{ old('body') }}"/>
                 </div>
             </div>
 
