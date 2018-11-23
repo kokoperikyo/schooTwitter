@@ -31,6 +31,9 @@ class TweetController extends Controller
       $tweet->body = $request->input('body');//Tweetテーブルのbodyに追加
       $tweet->save();//保存して新しいレコードが作られる
 
+      //これでツイートが新規投稿された時にflash_messageという名前でフラッシュデータが作られる
+      $request->session()->flash('flash_message','ツイートの新規投稿は無事に完了しました');
+
       return redirect('/tweets');//Route::get('/tweets', 'TweetController@index');に対応
     }
 
