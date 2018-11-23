@@ -10,6 +10,12 @@
       <a class="btn btn-primary" href="/tweets/create">ツイート新規投稿</a>
   </div>
   <div class="col-md-10">
+    {{-- flash_messageという名前のフラッシュデータがあるならば呼び出す --}}
+    @if(Session::has('flash_message'))
+      <div class="alert alert-success"> 
+          {{ Session::get('flash_message') }} 
+      </div>
+    @endif
       <table class="table">
           <tbody>
               @foreach($tweets as $tweet)
