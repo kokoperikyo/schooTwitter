@@ -65,9 +65,7 @@
                 </div>
             </div>
         </nav>
-        <div class="page-header">
-            <h1>@yield('page-title')</h1>
-        </div>
+
         @yield('content')
     </div>
 
