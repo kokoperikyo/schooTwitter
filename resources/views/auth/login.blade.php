@@ -60,6 +60,15 @@
                                 </a>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="/tweets">
+                                    ログインせずに閲覧する
+                                </a>
+                            </div>
+                        </div>
+
                     </form>
                 </div>
             </div>

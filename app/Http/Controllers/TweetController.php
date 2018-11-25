@@ -8,6 +8,18 @@ use App\Tweet;
 
 class TweetController extends Controller
 {
+
+    //認可
+    public function __construct()
+    {
+      $this->middleware('auth',[
+        //ここに書かれたメソッドはログインしてないと呼ばれずにリダイレクト
+        'only' => ['create','store','edit','update','destroy']
+      ]);
+    }
+
+
+
     //ツイート一覧表示画面
     public function index(){
       // resources/views/tweetのindex.blade.phpを呼ぶ

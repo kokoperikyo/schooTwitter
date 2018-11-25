@@ -13,10 +13,12 @@
         <p>{{ $tweet->created_at }}</p>
     </div>
 </div>
-<a href="/tweets/{{ $tweet->id }}/edit" class="btn btn-primary">更新</a>
-<form action="/tweets/{{ $tweet->id }}" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    {!! csrf_field() !!}
-    <button type="submit" class="btn btn-danger">削除</button>
-</form>
+@if(Auth::check())
+  <a href="/tweets/{{ $tweet->id }}/edit" class="btn btn-primary">更新</a>
+  <form action="/tweets/{{ $tweet->id }}" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      {!! csrf_field() !!}
+      <button type="submit" class="btn btn-danger">削除</button>
+  </form>
+@endif
 @endsection
