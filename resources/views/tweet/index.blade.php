@@ -7,7 +7,10 @@
 @section('content')
 <div class="row">
   <div class="col-md-2">
+    @if(Auth::check())
+    {{ Auth::user()->name }}
       <a class="btn btn-primary" href="/tweets/create">ツイート新規投稿</a>
+    @endif
   </div>
   <div class="col-md-10">
     {{-- flash_messageという名前のフラッシュデータがあるならば呼び出す --}}
