@@ -20,4 +20,4 @@ Route::delete('/tweets/{id}', 'TweetController@destroy');//ツイートの削除
 
 Auth::routes();//認証総てを司る。正体はvendor/laravel/framework/src/Illuminate/Routing/Router.phpにある
 
-// Route::get('/user/{id}/profile', 'UserProfileController@show');//ユーザーのプロフィール表示
+Route::get('/user/{id}/show', 'UserProfileController@show');//ユーザーのプロフィール表示
