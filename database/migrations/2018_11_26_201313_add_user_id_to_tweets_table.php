@@ -15,7 +15,7 @@ class AddUserIdToTweetsTable extends Migration
     {
         Schema::table('tweets', function (Blueprint $table) {
           $table->integer('user_id')->unsigned()->after('id');
-          $table->foreign('user_id')->references('id')->on('users');//user_idはusersテーブルのidを参照しにいくよー
+          $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
