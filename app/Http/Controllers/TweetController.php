@@ -46,6 +46,7 @@ class TweetController extends Controller
 
       $tweet = new Tweet;//Tweetモデルを読んで新しいレコードを作るよ！
       $tweet->body = $request->input('body');//Tweetテーブルのbodyに追加
+      $tweet->user_id = $request->user()->id;//今ログインしているユーザーのidを差し込む
       $tweet->save();//保存して新しいレコードが作られる
 
       //これでツイートが新規投稿された時にflash_messageという名前でフラッシュデータが作られる
