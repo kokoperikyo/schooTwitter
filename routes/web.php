@@ -18,6 +18,6 @@ Route::get('/tweets/{id}/edit', 'TweetController@edit');//ツイート詳細の�
 Route::put('/tweets/{id}', 'TweetController@update');//ツイートの更新が押されたときにのツイートのidを持ってupdateメソッドを呼ぶ、なんかよくわからんけどputを使う
 Route::delete('/tweets/{id}', 'TweetController@destroy');//ツイートの削除が押されたときにのツイートのidを持ってdestroyメソッドを呼ぶ、なんかよくわからんけどdeleteを使う
 
-Auth::routes();
+Auth::routes();//認証総てを司る。正体はvendor/laravel/framework/src/Illuminate/Routing/Router.phpにある
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/user/{id}/profile', 'UserProfileController@show');//ユーザーのプロフィール表示
