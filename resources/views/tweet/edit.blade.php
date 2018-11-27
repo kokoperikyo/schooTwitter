@@ -7,7 +7,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-12">
-      <form action="/tweets/{{ $tweet->id }}" method="post">
+      <form action="{{ route('user_profile.update', ['id' => $user->id]) }}" method="post">
         {{-- HTMLフォームはPUT、PATCH、DELETEアクションをサポートしいない。本来はgetとpostしか受け付けない。そこで隠しパラメーターで以下のようにPUTを渡す --}}
         <input type="hidden" name="_method" value="PUT">
           {!! csrf_field() !!}
