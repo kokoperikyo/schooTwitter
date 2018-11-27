@@ -12,4 +12,8 @@ class Tweet extends Model
     //１対多の「多」側はbelongsTo('相手の名前空間のフルパス')
     return $this->belongsTo('App\User');
   }
+
+  public function hashTags(){
+    return $this->belongsToMany('App\HashTag');
+  }
 }

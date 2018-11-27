@@ -7,7 +7,7 @@
 @section('content')
 <div class="row">
   <div class="col-md-12">
-      <form action="{{ route('user_profile.update', ['id' => $user->id]) }}" method="post">
+      <form action="/tweets/{{ $tweet->id }}" method="post">
         {{-- HTMLフォームはPUT、PATCH、DELETEアクションをサポートしいない。本来はgetとpostしか受け付けない。そこで隠しパラメーターで以下のようにPUTを渡す --}}
         <input type="hidden" name="_method" value="PUT">
           {!! csrf_field() !!}
@@ -16,6 +16,14 @@
               <label class="col-xs-2 col-form-label">ツイート本文</label>
               <div class="col-xs-10">
                   <input type="text" name="body" class="form-control" placeholder="ツイート本文を入力してください。" value="{{ $tweet->body }}"/>
+              </div>
+          </div>
+
+          <div class="form-group row">
+              <label class="col-xs-2 col-form-label">ハッシュタグ</label>
+              <div class="col-xs-10">
+                  <input type="text" name="hash_tags" class="form-control" placeholder="ハッシュタグを入力してください。" value="{{ old('hash_tags', $tweet->hashTags->implode('name', ' ')) }}"/>
+                  <p>複数のハッシュタグをつける場合は半角スペースで区切って</p>
               </div>
           </div>
 

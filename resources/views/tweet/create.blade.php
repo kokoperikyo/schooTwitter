@@ -29,6 +29,14 @@
             </div>
 
             <div class="form-group row">
+                <label class="col-xs-2 col-form-label">ハッシュタグ</label>
+                <div class="col-xs-10">
+                    <input type="text" name="hash_tags" class="form-control" placeholder="ハッシュタグを入力してください。" value="{{ old('body') }}"/>
+                    <p>複数のハッシュタグをつける場合は半角スペースで区切って</p>
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="col-xs-offset-2 col-xs-10">
                     <button type="submit" class="btn btn-primary">投稿する</button>
                 </div>
