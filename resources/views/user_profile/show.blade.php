@@ -17,7 +17,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-
+          <a href="/user/{{ $user->id }}/profile/edit" class="btn btn-primary">編集</a>
         </div>
     </div>
 @stop
